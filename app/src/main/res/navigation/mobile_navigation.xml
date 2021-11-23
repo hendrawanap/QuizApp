@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.quizapp.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.quizapp.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.quizapp.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_quiz_start"
+        android:name="com.example.quizapp.ui.quiz.QuizStartFragment"
+        android:label="quiz_start_fragment"
+        tools:layout="@layout/quiz_start_fragment" />
+    <fragment
+        android:id="@+id/navigation_quiz_process"
+        android:name="com.example.quizapp.ui.quiz.QuizProcessFragment"
+        android:label="quiz_process_fragment"
+        tools:layout="@layout/quiz_process_fragment" />
+    <fragment
+        android:id="@+id/navigation_quiz_result"
+        android:name="com.example.quizapp.ui.quiz.QuizResultFragment"
+        android:label="quiz_result_fragment"
+        tools:layout="@layout/quiz_result_fragment" />
+</navigation>
