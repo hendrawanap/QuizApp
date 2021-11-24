@@ -3,41 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/drawable/bottom_appbar_background.xml" value="0.37864583333333335" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/drawable/custom_button.xml" value="0.37864583333333335" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/drawable/ic_game.xml" value="0.37864583333333335" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.37864583333333335" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/font/nunito.xml" value="0.3927083333333333" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/font/nunito_bold.xml" value="0.3927083333333333" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/font/nunito_extrabold.xml" value="0.3927083333333333" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/font/nunito_semibold.xml" value="0.3927083333333333" />
         <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/activity_login.xml" value="0.3625" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/activity_onboarding.xml" value="0.1490036231884058" />
+        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/activity_register.xml" value="0.3625" />
         <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.3625" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/fragment_home.xml" value="0.33" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/fragment_leaderboard.xml" value="0.25" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/fragment_login.xml" value="0.22" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/fragment_onboarding.xml" value="0.25" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/fragment_profile.xml" value="0.3625" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/fragment_profile_edit.xml" value="0.3625" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/fragment_quiz_selection.xml" value="0.37447916666666664" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/fragment_register.xml" value="0.17300724637681159" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/leaderboard_fragment.xml" value="0.3625" />
+        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/fragment_home.xml" value="0.22735507246376813" />
         <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/quiz_process_fragment.xml" value="0.22" />
         <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/quiz_result_fragment.xml" value="0.25" />
         <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/layout/quiz_start_fragment.xml" value="0.33" />
         <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20260416666666667" />
-        <entry key="..\:/Projects/Android/QuizApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/QuizApp/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
       </map>
     </option>
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/app/src/main/res/font/nunito.xml" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/font/nunito_bold.xml" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/font/nunito_extrabold.xml" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/font/nunito_semibold.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
