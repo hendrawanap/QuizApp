@@ -9,7 +9,9 @@ class HomeViewModel : ViewModel() {
 
     private val _username = MutableLiveData<String>().apply {
         val user = FirebaseAuth.getInstance().currentUser
-        value = user!!.displayName
+        if (user != null) {
+            value = user.displayName
+        }
     }
     val username: LiveData<String> = _username
 }

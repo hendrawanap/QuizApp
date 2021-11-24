@@ -37,11 +37,12 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        binding.goToLeaderboard.setOnClickListener { findNavController().navigate(R.id.navigation_leaderboard) }
+
         val textView: TextView = binding.username
         homeViewModel.username.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
-        binding.startBtn.setOnClickListener { findNavController().navigate(R.id.navigation_quiz_start) }
 
         return root
     }

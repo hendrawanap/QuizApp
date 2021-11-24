@@ -12,29 +12,38 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.quizapp.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.quizapp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
-    <fragment
         android:id="@+id/navigation_quiz_start"
         android:name="com.example.quizapp.ui.quiz.QuizStartFragment"
         android:label="quiz_start_fragment"
-        tools:layout="@layout/quiz_start_fragment" />
+        tools:layout="@layout/fragment_quiz_start" />
     <fragment
         android:id="@+id/navigation_quiz_process"
         android:name="com.example.quizapp.ui.quiz.QuizProcessFragment"
         android:label="quiz_process_fragment"
-        tools:layout="@layout/quiz_process_fragment" />
+        tools:layout="@layout/fragment_quiz_process" />
     <fragment
         android:id="@+id/navigation_quiz_result"
         android:name="com.example.quizapp.ui.quiz.QuizResultFragment"
         android:label="quiz_result_fragment"
-        tools:layout="@layout/quiz_result_fragment" />
+        tools:layout="@layout/fragment_quiz_result" />
+    <fragment
+        android:id="@+id/navigation_leaderboard"
+        android:name="com.example.quizapp.ui.leaderboard.LeaderboardFragment"
+        android:label="fragment_leaderboard"
+        tools:layout="@layout/fragment_leaderboard" />
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.quizapp.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/navigation_quiz_selection"
+        android:name="com.example.quizapp.ui.quiz.QuizSelectionFragment"
+        android:label="fragment_quiz_selection"
+        tools:layout="@layout/fragment_quiz_selection" />
+    <fragment
+        android:id="@+id/navigation_profile_edit"
+        android:name="com.example.quizapp.ui.profile.ProfileEditFragment"
+        android:label="fragment_profile_edit"
+        tools:layout="@layout/fragment_profile_edit" />
 </navigation>

@@ -7,26 +7,36 @@
     android:orientation="vertical"
     android:paddingHorizontal="48dp"
     android:paddingTop="48dp"
-    tools:context=".LoginActivity">
+    tools:context=".ui.onboarding.RegisterFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Register"
         android:textAlignment="center"
         android:layout_marginBottom="24dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
 
     <EditText
-        android:id="@+id/loginEmail"
+        android:id="@+id/regName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_marginBottom="16dp"
+        android:hint="John Doe"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/regEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginBottom="16dp"
+        android:hint="example@email.com"
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/loginPassword"
+        android:id="@+id/regPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -34,14 +44,14 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login" />
-
-    <Button
-        android:id="@+id/goToRegBtn"
+        android:id="@+id/regBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Register" />
+
+    <Button
+        android:id="@+id/goToLoginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login" />
 </LinearLayout>

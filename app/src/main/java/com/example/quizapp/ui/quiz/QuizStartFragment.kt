@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.quizapp.R
-import com.example.quizapp.databinding.QuizStartFragmentBinding
+import com.example.quizapp.databinding.FragmentQuizStartBinding
 
 class QuizStartFragment : Fragment() {
 
@@ -18,7 +18,7 @@ class QuizStartFragment : Fragment() {
     }
 
     private val viewModel: QuizViewModel by activityViewModels()
-    private var _binding: QuizStartFragmentBinding? = null
+    private var _binding: FragmentQuizStartBinding? = null
 
     private val binding get() = _binding!!
 
@@ -27,9 +27,7 @@ class QuizStartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = QuizStartFragmentBinding.inflate(inflater, container, false)
-
-        viewModel.generateMultipleChoiceQuiz("Makanan", 10)
+        _binding = FragmentQuizStartBinding.inflate(inflater, container, false)
 
         viewModel.isLoaded.observe(viewLifecycleOwner, Observer {
             if (it) {
@@ -59,10 +57,5 @@ class QuizStartFragment : Fragment() {
         }
         return binding.root
     }
-
-    override fun onStart() {
-        super.onStart()
-    }
-
 
 }

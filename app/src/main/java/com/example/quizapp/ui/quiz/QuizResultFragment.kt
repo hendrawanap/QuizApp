@@ -10,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.quizapp.R
-import com.example.quizapp.databinding.QuizResultFragmentBinding
+import com.example.quizapp.databinding.FragmentQuizResultBinding
 
 class QuizResultFragment : Fragment() {
 
@@ -19,7 +19,7 @@ class QuizResultFragment : Fragment() {
     }
 
     private val viewModel: QuizViewModel by activityViewModels()
-    private var _binding: QuizResultFragmentBinding? = null
+    private var _binding: FragmentQuizResultBinding? = null
 
     private val binding get() = _binding!!
 
@@ -27,7 +27,7 @@ class QuizResultFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = QuizResultFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentQuizResultBinding.inflate(inflater, container, false)
 
         viewModel.apply {
             score.observe(viewLifecycleOwner, Observer {

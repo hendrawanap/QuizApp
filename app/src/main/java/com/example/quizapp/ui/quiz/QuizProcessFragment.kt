@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.quizapp.R
-import com.example.quizapp.databinding.QuizProcessFragmentBinding
+import com.example.quizapp.databinding.FragmentQuizProcessBinding
 import com.example.quizapp.model.MultipleChoiceQuestion
 import com.google.firebase.storage.FirebaseStorage
 
@@ -21,7 +21,7 @@ class QuizProcessFragment : Fragment() {
     }
 
     private val viewModel: QuizViewModel by activityViewModels()
-    private var _binding: QuizProcessFragmentBinding? = null
+    private var _binding: FragmentQuizProcessBinding? = null
 
     private val binding get() = _binding!!
 
@@ -29,7 +29,7 @@ class QuizProcessFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = QuizProcessFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentQuizProcessBinding.inflate(inflater, container, false)
 
         viewModel.currentQuestion.observe(viewLifecycleOwner, Observer {
             if (it != null) {
