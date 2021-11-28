@@ -1,5 +1,8 @@
 package com.example.quizapp.ui.onboarding
 
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.quizapp.MainActivity
@@ -40,7 +44,10 @@ class LoginFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
 
         binding.apply {
-            loginBtn.setOnClickListener { login() }
+            loginBtn.setOnClickListener {
+                login()
+                hideKeyboard()
+            }
             goToRegBtn.setOnClickListener { findNavController().navigate(R.id.navigation_register) }
         }
 
@@ -67,4 +74,18 @@ class LoginFragment : Fragment() {
             Toast.makeText(this.context, "Fill all the fields!", Toast.LENGTH_LONG).show()
         }
     }
+
+    fun Fragment.hideKeyboard() {
+        view?.let { activity?.hideKeyboard(it) }
+    }
+
+    fun Activity.hideKeyboard() {
+        hideKeyboard(currentFocus ?: View(this))
+    }
+
+    private fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
 }
