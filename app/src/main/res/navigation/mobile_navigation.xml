@@ -46,4 +46,9 @@
         android:name="com.example.quizapp.ui.profile.ProfileEditFragment"
         android:label="fragment_profile_edit"
         tools:layout="@layout/fragment_profile_edit" />
+    <fragment
+        android:id="@+id/navigation_quiz_category_selection"
+        android:name="com.example.quizapp.ui.quiz.QuizCategorySelectionFragment"
+        android:label="fragment_quiz_category_selection"
+        tools:layout="@layout/fragment_quiz_category_selection" />
 </navigation>

@@ -29,13 +29,17 @@ class QuizStartFragment : Fragment() {
 
         _binding = FragmentQuizStartBinding.inflate(inflater, container, false)
 
+        binding.countDown.visibility = View.GONE
+
         viewModel.isLoaded.observe(viewLifecycleOwner, Observer {
             if (it) {
                 binding.progressBar.visibility = View.GONE
                 binding.startQuiz.visibility = View.VISIBLE
+                binding.textStart.visibility = View.VISIBLE
             } else {
                 binding.progressBar.visibility = View.VISIBLE
                 binding.startQuiz.visibility = View.GONE
+                binding.textStart.visibility = View.GONE
             }
         })
 
@@ -49,10 +53,21 @@ class QuizStartFragment : Fragment() {
             }
         })
 
+        viewModel.topic.observe(viewLifecycleOwner, Observer {
+            binding.topicTitle.text = it
+            when (it) {
+                "Makanan" -> binding.topicDesc.setText(R.string.start_makanan_desc)
+                "Wisata" -> binding.topicDesc.setText(R.string.start_wisata_desc)
+                "Ikon" -> binding.topicDesc.setText(R.string.start_ikon_desc)
+            }
+        })
+
         binding.startQuiz.apply {
             setOnClickListener {
                 viewModel.startQuizCountDown()
-                visibility = View.INVISIBLE
+                visibility = View.GONE
+                binding.textStart.visibility = View.GONE
+                binding.countDown.visibility = View.VISIBLE
             }
         }
         return binding.root

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.quiz.QuizSelectionFragment">
+    tools:context=".ui.quiz.QuizCategorySelectionFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,14 +18,14 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pilih Topik"
+            android:text="Pilih Kategori"
             android:textFontWeight="800"
             android:textSize="32dp"
             android:textColor="@color/white"
             android:layout_marginBottom="48dp"/>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/selection_food"
+            android:id="@+id/selection_multiple_choice"
             android:layout_width="match_parent"
             android:layout_height="112dp"
             android:layout_marginBottom="24dp"
@@ -37,7 +37,7 @@
                 android:layout_height="match_parent">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/ic_food"
+                    android:id="@+id/ic_multipleChoice"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_marginStart="24dp"
@@ -50,20 +50,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:text="Makanan"
+                    android:text="Pilihan Ganda"
                     android:textColor="@color/black"
                     android:textFontWeight="800"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ic_food"
+                    app:layout_constraintStart_toEndOf="@+id/ic_multipleChoice"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:srcCompat="@drawable/ic_topic_card_blob" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -71,7 +64,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:id="@+id/selection_icon"
+            android:id="@+id/selection_short_answer"
             android:layout_height="112dp"
             android:layout_marginBottom="24dp"
             app:cardBackgroundColor="@color/white"
@@ -82,7 +75,7 @@
                 android:layout_height="match_parent">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/ic_icon"
+                    android:id="@+id/ic_shortAnswer"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_marginStart="24dp"
@@ -95,64 +88,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:text="Ikon Kota"
+                    android:text="Jawaban Singkat"
                     android:textColor="@color/black"
                     android:textFontWeight="800"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ic_icon"
+                    app:layout_constraintStart_toEndOf="@+id/ic_shortAnswer"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:srcCompat="@drawable/ic_topic_card_blob_red" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="112dp"
-            android:id="@+id/selection_tourism"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="20dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/ic_tourism"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_marginStart="24dp"
-                    android:src="@drawable/ic_android_black_24dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:text="Wisata"
-                    android:textColor="@color/black"
-                    android:textFontWeight="800"
-                    android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ic_tourism"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:srcCompat="@drawable/ic_topic_card_blob_orange" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

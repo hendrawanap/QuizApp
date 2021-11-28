@@ -7,7 +7,7 @@ class Quiz(_questions: ArrayList<Question>) {
     private var currentIndex: Int = 0
 
     companion object {
-        private const val CORRECT_SCORE: Int = 10
+        private const val CORRECT_SCORE: Int = 250
     }
 
     init {
@@ -50,4 +50,6 @@ class Quiz(_questions: ArrayList<Question>) {
             return null
         }
     }
+
+    fun getAnswer(): String = questions[currentIndex - 1].answer
 }

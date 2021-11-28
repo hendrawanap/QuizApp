@@ -33,11 +33,33 @@ class QuizResultFragment : Fragment() {
             score.observe(viewLifecycleOwner, Observer {
                 binding.score.text = it.toString()
             })
+
             accuracy.observe(viewLifecycleOwner, Observer {
-                binding.accuracy.text = it.toString()
+                val format = "${it.times(100).toInt()} %"
+                binding.accuracy.text = format
             })
+
             timeElapsed.observe(viewLifecycleOwner, Observer {
-                binding.timeElapsed.text = it.toString()
+                val minute = it / 60 / 1000
+                val second = it / 1000 % 60
+                val millis = it % 1000 / 10
+                val format = "$minute:$second.$millis"
+                binding.timeElapsed.text = format
+            })
+
+            topic.observe(viewLifecycleOwner, Observer {
+                binding.topic.text = it
+            })
+
+            category.observe(viewLifecycleOwner, Observer {
+                when (it) {
+                    "Multiple" -> binding.category.setText(R.string.category_multiple)
+                    "Short" -> binding.category.setText(R.string.category_short)
+                }
+            })
+
+            highestScore.observe(viewLifecycleOwner, Observer {
+                binding.highestScore.text = it.toString()
             })
         }
 
