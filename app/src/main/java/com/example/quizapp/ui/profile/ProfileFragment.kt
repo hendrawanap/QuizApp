@@ -53,11 +53,11 @@ class ProfileFragment : Fragment() {
 
 //        binding.goToEdit.setOnClickListener { findNavController().navigate(R.id.navigation_profile_edit) }
 //
-//        binding.logoutBtn.setOnClickListener {
-//            FirebaseAuth.getInstance().signOut()
-//            val intent = Intent(this.activity, OnboardingActivity::class.java)
-//            startActivity(intent)
-//        }
+        binding.logoutBtn.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this.activity, OnboardingActivity::class.java)
+            startActivity(intent)
+        }
 
 
         

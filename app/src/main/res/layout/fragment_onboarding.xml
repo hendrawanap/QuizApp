@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,12 +10,56 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Onboarding" />
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="10dp"
+        android:text="Uplearn"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textStyle="bold"
+        android:textFontWeight="800"/>
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:text="Seberapa baik kamu mengenal Indonesia? "
+        android:textFontWeight="600"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="320dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        app:srcCompat="@drawable/happy_bunch___chat" />
+
+    <TextView
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:text="Aplikasi ini akan membantumu untuk belajar dan mengenal budaya dan pengetahuan mengenai Indonesia secara menyenangkan dan juga mudah"
+        android:justificationMode="inter_word"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textFontWeight="600"
+        android:textSize="20sp" />
+
+
+
 
     <Button
         android:id="@+id/goToLoginBtn"
-        android:layout_width="match_parent"
+        style="@style/CustomButton"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Start Learning Now"/>
+        android:layout_marginBottom="12dp"
+        android:layout_gravity="center"
+        android:background="@drawable/custom_button"
+        android:text="Mulai Belajar Sekarang"
+        android:textFontWeight="700"/>
 
 </LinearLayout>
