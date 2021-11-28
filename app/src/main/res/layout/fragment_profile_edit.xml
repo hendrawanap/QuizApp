@@ -1,14 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileEditFragment">
+    tools:context=".ui.profile.ProfileEditFragment"
+    tools:ignore="SpeakableTextPresentCheck">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profile Edit" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:textAlignment="gravity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_color"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/namaPengguna"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="John Doe"
+                android:textAlignment="center"
+                android:textFontWeight="800"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="126dp"
+                    android:layout_height="126dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/robot_icon_svg"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bottom_appbar_background"
+                    android:padding="8dp"
+                    android:src="@drawable/cam_icon"
+                    android:tint="@color/primary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/profile_image"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/profile_image" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <include layout="@layout/custom_switch"
+                android:id="@+id/toggle"/>
+        </LinearLayout>
+
+        <!--                <com.google.android.material.button.MaterialButtonToggleGroup-->
+        <!--            android:id="@+id/toggleButtonGroup"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:singleSelection="true"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent">-->
+
+        <!--            <Button-->
+        <!--                android:id="@+id/btnAndroid"-->
+        <!--                style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="Profile"-->
+        <!--                android:textAllCaps="false" />-->
+
+        <!--            <Button-->
+        <!--                android:id="@+id/btnWeb"-->
+        <!--                style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="Kata Sandi"-->
+        <!--                android:textAllCaps="false" />-->
+
+        <!--        </com.google.android.material.button.MaterialButtonToggleGroup>-->
 
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/profilDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="Profile Detail"
+            android:textFontWeight="800"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:text="Nama Pengguna"
+            android:textFontWeight="800"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/inputNama"
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_button"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+
+
+            android:text="John Doe" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="20dp"
+            android:text="Email Pengguna"
+            android:textFontWeight="800"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/inputEmail"
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_button"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:text="johndoe@mail.com" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Simpan" />
+
+
+    </LinearLayout>
+
+</ScrollView>

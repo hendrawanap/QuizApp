@@ -33,6 +33,9 @@ class ProfileEditFragment : Fragment() {
 
         _binding = FragmentProfileEditBinding.inflate(inflater, container, false)
 
+        binding.toggle.left.text = "Profil"
+        binding.toggle.right.text = "Kata Sandi"
+
         return binding.root
     }
 
