@@ -10,8 +10,11 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentProfileBinding
+import com.example.quizapp.model.Record
 import com.example.quizapp.ui.onboarding.OnboardingActivity
 import com.google.firebase.auth.FirebaseAuth
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ProfileFragment : Fragment() {
 
@@ -25,6 +28,8 @@ class ProfileFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var rvAdapter: RecentlyPlayedAdapter
+    private lateinit var recentlyPlayedList : ArrayList<Record>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,13 +39,28 @@ class ProfileFragment : Fragment() {
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
-        binding.goToEdit.setOnClickListener { findNavController().navigate(R.id.navigation_profile_edit) }
+        recentlyPlayedList = arrayListOf(
+            Record(0.5f,1000L, Date(),3540, "Makanan", "Multiple", "234112323" ),
+            Record(0.5f,1000L, Date(),3240, "Ikon", "Short", "23412323" ),
+            Record(0.5f,1000L, Date(),3140, "Wisata", "Multiple", "2341231231" ),
+            Record(0.5f,1000L, Date(),2540, "Makanan", "Short", "234123123" ),
+            Record(0.5f,1000L, Date(),5540, "Wisata", "Multiple", "2312314123" ),
+            Record(0.5f,1000L, Date(),3740, "Ikon", "Short", "234123123" )
 
-        binding.logoutBtn.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            val intent = Intent(this.activity, OnboardingActivity::class.java)
-            startActivity(intent)
-        }
+        )
+        rvAdapter = RecentlyPlayedAdapter(recentlyPlayedList)
+        binding.rvRecentlyPlayed.rvProfile.adapter = rvAdapter
+
+//        binding.goToEdit.setOnClickListener { findNavController().navigate(R.id.navigation_profile_edit) }
+//
+//        binding.logoutBtn.setOnClickListener {
+//            FirebaseAuth.getInstance().signOut()
+//            val intent = Intent(this.activity, OnboardingActivity::class.java)
+//            startActivity(intent)
+//        }
+
+
+        
 
         return binding.root
     }
