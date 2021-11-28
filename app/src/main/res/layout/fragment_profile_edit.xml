@@ -57,11 +57,11 @@
                     android:background="@drawable/bottom_appbar_background"
                     android:padding="8dp"
                     android:src="@drawable/cam_icon"
-                    android:tint="@color/primary"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/profile_image"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/profile_image" />
+                    app:layout_constraintStart_toStartOf="@+id/profile_image"
+                    app:tint="@color/primary" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <include layout="@layout/custom_switch"
