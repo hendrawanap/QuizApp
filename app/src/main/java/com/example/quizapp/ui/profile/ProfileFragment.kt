@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.quizapp.R
@@ -30,37 +29,32 @@ class ProfileFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    lateinit var history : MutableList<Record>
     private lateinit var rvAdapter: RecentlyPlayedAdapter
-    private lateinit var recentlyPlayedList : ArrayList<Record>
+   private lateinit var recentlyPlayedList : ArrayList<Record>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
+
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
-        recentlyPlayedList = arrayListOf(
-            Record(0.5f,1000L, Date(),3540, "Makanan", "Multiple", "234112323" ),
-            Record(0.5f,1000L, Date(),3240, "Ikon", "Short", "23412323" ),
-            Record(0.5f,1000L, Date(),3140, "Wisata", "Multiple", "2341231231" ),
-            Record(0.5f,1000L, Date(),2540, "Makanan", "Short", "234123123" ),
-            Record(0.5f,1000L, Date(),5540, "Wisata", "Multiple", "2312314123" ),
-            Record(0.5f,1000L, Date(),3740, "Ikon", "Short", "234123123" )
-
-        )
-        rvAdapter = RecentlyPlayedAdapter(recentlyPlayedList)
-        binding.rvRecentlyPlayed.rvProfile.adapter = rvAdapter
+        viewModel.getRecords()
+        history = mutableListOf<Record>()
+        viewModel.history.observe(viewLifecycleOwner, {
+            history = it
+            binding.rvRecentlyPlayed.rvProfile.adapter = RecentlyPlayedAdapter(history)
+        })
 
         binding.editButton.setOnClickListener { findNavController().navigate(R.id.navigation_profile_edit) }
-//
+
         binding.logoutBtn.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             val intent = Intent(this.activity, OnboardingActivity::class.java)
             startActivity(intent)
         }
-
-
         viewModel.nickname.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             binding.username.text = it
         })
@@ -69,9 +63,6 @@ class ProfileFragment : Fragment() {
         })
 
 
-
-
-        
 
         return binding.root
     }

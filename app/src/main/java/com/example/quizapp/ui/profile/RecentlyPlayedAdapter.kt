@@ -11,7 +11,7 @@ import com.example.quizapp.databinding.FragmentProfileBinding
 import com.example.quizapp.databinding.ItemRowHistoryIkonBinding
 import com.example.quizapp.model.Record
 
-class RecentlyPlayedAdapter (private val recentlyPlayedList : ArrayList<Record>):
+class RecentlyPlayedAdapter (private val recentlyPlayedList : List<Record>):
     RecyclerView.Adapter<RecentlyPlayedAdapter.ListViewHolder>(){
 
 //    private var _binding: FragmentProfileBinding? = null
