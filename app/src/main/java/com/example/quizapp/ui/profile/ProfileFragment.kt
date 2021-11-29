@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentProfileBinding
@@ -22,7 +24,7 @@ class ProfileFragment : Fragment() {
         fun newInstance() = ProfileFragment()
     }
 
-    private lateinit var viewModel: ProfileViewModel
+    private val viewModel: ProfileViewModel by activityViewModels()
     private var _binding: FragmentProfileBinding? = null
 
     // This property is only valid between onCreateView and
@@ -35,7 +37,6 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
@@ -51,13 +52,23 @@ class ProfileFragment : Fragment() {
         rvAdapter = RecentlyPlayedAdapter(recentlyPlayedList)
         binding.rvRecentlyPlayed.rvProfile.adapter = rvAdapter
 
-//        binding.goToEdit.setOnClickListener { findNavController().navigate(R.id.navigation_profile_edit) }
+        binding.editButton.setOnClickListener { findNavController().navigate(R.id.navigation_profile_edit) }
 //
         binding.logoutBtn.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             val intent = Intent(this.activity, OnboardingActivity::class.java)
             startActivity(intent)
         }
+
+
+        viewModel.nickname.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            binding.username.text = it
+        })
+        viewModel.email.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            binding.tvEmail.text = it
+        })
+
+
 
 
         

@@ -61,11 +61,13 @@
                     app:layout_constraintEnd_toEndOf="@+id/profile_image"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="@+id/profile_image"
-                    app:tint="@color/primary" />
+                    app:tint="@color/primary"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <include layout="@layout/custom_switch"
                 android:id="@+id/toggle"/>
+
         </LinearLayout>
 
         <!--                <com.google.android.material.button.MaterialButtonToggleGroup-->
@@ -97,71 +99,13 @@
         <!--        </com.google.android.material.button.MaterialButtonToggleGroup>-->
 
 
-        <TextView
-            android:id="@+id/profilDetail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:text="Profile Detail"
-            android:textFontWeight="800"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/nama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:text="Nama Pengguna"
-            android:textFontWeight="800"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/inputNama"
-            android:layout_width="305dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/custom_button"
-            android:ems="10"
-            android:gravity="center"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-
-
-            android:text="John Doe" />
-
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="20dp"
-            android:text="Email Pengguna"
-            android:textFontWeight="800"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/inputEmail"
-            android:layout_width="305dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/custom_button"
-            android:ems="10"
-            android:gravity="center"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:text="johndoe@mail.com" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="162dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Simpan" />
+        <include
+            layout="@layout/view_profile_edit_name"
+            android:id="@+id/profileName"
+            />
+        <include layout="@layout/view_profile_edit_password"
+            android:id="@+id/profilePassword"
+            android:visibility="gone"/>
 
 
     </LinearLayout>
