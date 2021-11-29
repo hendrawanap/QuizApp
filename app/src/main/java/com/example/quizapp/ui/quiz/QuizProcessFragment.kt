@@ -75,7 +75,7 @@ class QuizProcessFragment : Fragment() {
         binding.viewShortAnswer.apply {
             root.visibility = View.GONE
             answerBtn.setOnClickListener {
-                viewModel.answer(answerField.text.toString())
+                viewModel.answer(answerField.text.toString().trim())
                 if (!viewModel.currentAnswer.value.equals(answerField.text.toString(), true)) {
                     changeStyle("incorrect", answerField)
                 }

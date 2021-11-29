@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentQuizResultBinding
+import com.example.quizapp.ui.profile.ProfileViewModel
 
 class QuizResultFragment : Fragment() {
 
@@ -19,6 +20,7 @@ class QuizResultFragment : Fragment() {
     }
 
     private val viewModel: QuizViewModel by activityViewModels()
+    private val profileVM: ProfileViewModel by activityViewModels()
     private var _binding: FragmentQuizResultBinding? = null
 
     private val binding get() = _binding!!
@@ -62,6 +64,10 @@ class QuizResultFragment : Fragment() {
                 binding.highestScore.text = it.toString()
             })
         }
+
+        profileVM.username.observe(viewLifecycleOwner, Observer {
+            binding.username.text = it
+        })
 
         binding.backToHomeBtn.setOnClickListener { findNavController().navigate(R.id.navigation_home) }
 
