@@ -76,7 +76,7 @@ class QuizProcessFragment : Fragment() {
             root.visibility = View.GONE
             answerBtn.setOnClickListener {
                 viewModel.answer(answerField.text.toString().trim())
-                if (!viewModel.currentAnswer.value.equals(answerField.text.toString(), true)) {
+                if (!viewModel.currentAnswer.value.equals(answerField.text.toString().trim(), true)) {
                     changeStyle("incorrect", answerField)
                 }
                 viewModel.showHint()
