@@ -18,4 +18,5 @@
     <color name="background">#333333</color>
     <color name="backgroundDarker">#2A2A2A</color>
     <color name="muted">#c2c2c2</color>
+    <color name="success">#58c978</color>
 </resources>
