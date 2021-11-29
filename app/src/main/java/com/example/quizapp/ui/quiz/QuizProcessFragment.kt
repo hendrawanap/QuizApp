@@ -148,7 +148,7 @@ class QuizProcessFragment : Fragment() {
 
                 binding.viewShortAnswer.apply {
                     when (viewModel.currentAnswer.value) {
-                        answerField.text.toString() -> changeStyle("correct", answerField)
+                        answerField.text.toString().trim() -> changeStyle("correct", answerField)
                     }
                 }
             } else {
