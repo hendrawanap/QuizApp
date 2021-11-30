@@ -75,8 +75,8 @@ class QuizProcessFragment : Fragment() {
         binding.viewShortAnswer.apply {
             root.visibility = View.GONE
             answerBtn.setOnClickListener {
-                viewModel.answer(answerField.text.toString())
-                if (!viewModel.currentAnswer.value.equals(answerField.text.toString(), true)) {
+                viewModel.answer(answerField.text.toString().trim())
+                if (!viewModel.currentAnswer.value.equals(answerField.text.toString().trim(), true)) {
                     changeStyle("incorrect", answerField)
                 }
                 viewModel.showHint()
@@ -148,7 +148,7 @@ class QuizProcessFragment : Fragment() {
 
                 binding.viewShortAnswer.apply {
                     when (viewModel.currentAnswer.value) {
-                        answerField.text.toString() -> changeStyle("correct", answerField)
+                        answerField.text.toString().trim() -> changeStyle("correct", answerField)
                     }
                 }
             } else {

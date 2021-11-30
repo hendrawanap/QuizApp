@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Button style-->
     <style name="CustomButton" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/custom_button</item>
         <item name="android:minHeight">48dp</item>
@@ -16,4 +17,13 @@
         <item name="android:textStyle">bold</item>
         <item name="android:letterSpacing">0.05</item>
     </style>
+
+    <!--Material Circle Image style-->
+    <style name="circleImageView" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+
+
 </resources>

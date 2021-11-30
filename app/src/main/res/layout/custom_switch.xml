@@ -12,7 +12,7 @@
         android:layout_marginRight="100dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/pink_outline"
-        android:checkedButton="@+id/right"
+        android:checkedButton="@+id/left"
         android:orientation="horizontal"
         >
 
