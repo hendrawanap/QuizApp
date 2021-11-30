@@ -12,7 +12,7 @@ import com.example.quizapp.databinding.FragmentOnboardingBinding
 class OnboardingFragment : Fragment() {
 
     companion object {
-        fun newInstance() = LoginFragment()
+        fun newInstance() = OnboardingFragment()
     }
 
     private var _binding: FragmentOnboardingBinding? = null
