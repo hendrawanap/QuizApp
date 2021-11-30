@@ -8,33 +8,42 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.ktx.Firebase
 import com.example.quizapp.model.Record
+import com.example.quizapp.model.User
 import com.google.firebase.firestore.ktx.firestore
 import kotlin.collections.ArrayList
 
 class ProfileViewModel : ViewModel() {
-    private val _username = MutableLiveData<String>().apply {
+    private val _user = MutableLiveData<User>().apply{
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
-            value = user.displayName
+            value = User(user.uid, user.displayName!!, user.photoUrl.toString(), user.email!!)
         }
     }
-    val username: LiveData<String> = _username
+    val user: LiveData<User> = _user
 
-    private val _nickname =  MutableLiveData<String>().apply{
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            value = user.displayName!!.split(" ")[0]
-        }
-    }
-
-    val nickname: LiveData<String> =_nickname
-    private val _email = MutableLiveData<String>().apply {
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            value = user.email
-        }
-    }
-    val email: LiveData<String> = _email
+//    private val _username = MutableLiveData<String>().apply {
+//        val user = FirebaseAuth.getInstance().currentUser
+//        if (user != null) {
+//            value = user.displayName
+//        }
+//    }
+//    val username: LiveData<String> = _username
+//
+//    private val _nickname =  MutableLiveData<String>().apply{
+//        val user = FirebaseAuth.getInstance().currentUser
+//        if (user != null) {
+//            value = user.displayName!!.split(" ")[0]
+//        }
+//    }
+//
+//    val nickname: LiveData<String> =_nickname
+//    private val _email = MutableLiveData<String>().apply {
+//        val user = FirebaseAuth.getInstance().currentUser
+//        if (user != null) {
+//            value = user.email
+//        }
+//    }
+//    val email: LiveData<String> = _email
 
     private val _currentMenu = MutableLiveData<String>().apply {
         value =  "profil"
@@ -46,8 +55,7 @@ class ProfileViewModel : ViewModel() {
 
         val profileNameUpdates = UserProfileChangeRequest.Builder().setDisplayName(nama).build()
         user!!.updateProfile(profileNameUpdates).addOnCompleteListener {
-            _username.value = nama
-            _nickname.value = nama.split(" ")[0]
+            _user.value = User(user.uid,nama,user.photoUrl.toString(),user.email!!)
         }
     }
     private val _message = MutableLiveData<String>()

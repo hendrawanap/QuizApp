@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentProfileBinding
 import com.example.quizapp.model.Record
@@ -55,13 +56,11 @@ class ProfileFragment : Fragment() {
             val intent = Intent(this.activity, OnboardingActivity::class.java)
             startActivity(intent)
         }
-        viewModel.nickname.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            binding.username.text = it
+        viewModel.user.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            binding.username.text = it.username.split(" ")[0]
+            binding.tvEmail.text = it.email
+            Glide.with(this).load(it.displayImg).into(binding.profileImage)
         })
-        viewModel.email.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            binding.tvEmail.text = it
-        })
-
 
 
         return binding.root

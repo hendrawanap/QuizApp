@@ -65,8 +65,8 @@ class QuizResultFragment : Fragment() {
             })
         }
 
-        profileVM.username.observe(viewLifecycleOwner, Observer {
-            binding.username.text = it
+        profileVM.user.observe(viewLifecycleOwner, Observer {
+            binding.username.text = it.username
         })
 
         binding.backToHomeBtn.setOnClickListener { findNavController().navigate(R.id.navigation_home) }
