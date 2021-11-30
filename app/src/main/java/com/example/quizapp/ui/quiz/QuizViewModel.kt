@@ -260,8 +260,8 @@ class QuizViewModel : ViewModel() {
         recordsRef.add(hashMapOf(
             "duration" to timeElapsed.value,
             "finishedAt" to FieldValue.serverTimestamp(),
-            "topic" to _topic.value,
-            "type" to "Multiple",
+            "topic" to topic.value,
+            "type" to category.value,
             "score" to score.value,
             "accuracy" to accuracy.value,
             "userId" to user!!.uid,
