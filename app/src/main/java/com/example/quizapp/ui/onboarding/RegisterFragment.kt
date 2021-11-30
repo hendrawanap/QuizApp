@@ -12,9 +12,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.quizapp.MainActivity
 import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentRegisterBinding
+import com.example.quizapp.model.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import kotlin.random.Random
 
 class RegisterFragment : Fragment() {
 
@@ -64,19 +68,39 @@ class RegisterFragment : Fragment() {
 
     }
 
-    private fun updateProfile(name: String, photoURL: String = "https://firebasestorage.googleapis.com/v0/b/quiz-app-99856.appspot.com/o/avatars%2Favatar_male_1.png?alt=media&token=be88df1f-7f78-425b-9d53-bea375677811") {
+    private fun updateProfile(name: String) {
+        val photoUrls = arrayListOf<String>(
+            "https://firebasestorage.googleapis.com/v0/b/quiz-app-99856.appspot.com/o/avatars%2Favatar_1.png?alt=media&token=3a610561-ef98-427e-8c21-59d31f632030",
+            "https://firebasestorage.googleapis.com/v0/b/quiz-app-99856.appspot.com/o/avatars%2Favatar_10.png?alt=media&token=96619e75-d54e-4f98-8f03-fc41622a0eb7",
+            "https://firebasestorage.googleapis.com/v0/b/quiz-app-99856.appspot.com/o/avatars%2Favatar_2.png?alt=media&token=2fde9511-9b30-466e-bca8-016f2f128ccd",
+            "https://firebasestorage.googleapis.com/v0/b/quiz-app-99856.appspot.com/o/avatars%2Favatar_3.png?alt=media&token=160a9cad-9bdf-4d9f-801c-665d6d26644d",
+            "https://firebasestorage.googleapis.com/v0/b/quiz-app-99856.appspot.com/o/avatars%2Favatar_4.png?alt=media&token=37915b41-d1be-4e1c-9952-fbc977d727eb",
+            "https://firebasestorage.googleapis.com/v0/b/quiz-app-99856.appspot.com/o/avatars%2Favatar_5.png?alt=media&token=11368dab-30f6-4620-a772-58c96b7ae900",
+            "https://firebasestorage.googleapis.com/v0/b/quiz-app-99856.appspot.com/o/avatars%2Favatar_6.png?alt=media&token=65cfdf7b-20a3-45e5-b3ef-62ca4438403e",
+            "https://firebasestorage.googleapis.com/v0/b/quiz-app-99856.appspot.com/o/avatars%2Favatar_7.png?alt=media&token=c92e4d86-d8fa-489e-aa39-87c349e35f86",
+            "https://firebasestorage.googleapis.com/v0/b/quiz-app-99856.appspot.com/o/avatars%2Favatar_8.png?alt=media&token=747d5b06-2a5a-4a58-a14c-99c051a2b650",
+            "https://firebasestorage.googleapis.com/v0/b/quiz-app-99856.appspot.com/o/avatars%2Favatar_9.png?alt=media&token=c3106d98-7c69-456e-8daf-17f2bbeb93b1"
+        )
         val user = FirebaseAuth.getInstance().currentUser
+        val photoUri = photoUrls[(0..9).random()]
         val newProfile = UserProfileChangeRequest.Builder()
             .setDisplayName(name)
-            .setPhotoUri(Uri.parse(photoURL))
+            .setPhotoUri(Uri.parse(photoUri))
             .build()
         user!!.updateProfile(newProfile).addOnCompleteListener { task ->
             if (task.isSuccessful) {
+                addToDatabase(User(user.uid, name, photoUri, user.email!!))
                 Toast.makeText(this.context, "Successfully Registered", Toast.LENGTH_LONG).show()
                 val intent = Intent(this.activity, MainActivity::class.java)
                 startActivity(intent)
             }
         }
+    }
+
+    private fun addToDatabase(user: User) {
+        val db = Firebase.firestore
+        val collectionRef = db.collection("users")
+        collectionRef.document(user.uid).set(user)
     }
 
 }
