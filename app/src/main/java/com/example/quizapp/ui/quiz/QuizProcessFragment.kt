@@ -48,43 +48,67 @@ class QuizProcessFragment : Fragment() {
             }
         }
 
-        binding.viewMultipleChoice.apply {
-            root.visibility = View.GONE
-            choice1.setOnClickListener {
-                viewModel.answer(choice1.text.toString())
-                if (!choice1.text.toString().equals(viewModel.currentAnswer.value, true))
-                    changeStyle("incorrect", choice1)
-            }
-            choice2.setOnClickListener {
-                viewModel.answer(choice2.text.toString())
-                if (!choice2.text.toString().equals(viewModel.currentAnswer.value, true))
-                    changeStyle("incorrect", choice2)
-            }
-            choice3.setOnClickListener {
-                viewModel.answer(choice3.text.toString())
-                if (!choice3.text.toString().equals(viewModel.currentAnswer.value, true))
-                    changeStyle("incorrect", choice3)
-            }
-            choice4.setOnClickListener {
-                viewModel.answer(choice4.text.toString())
-                if (!choice4.text.toString().equals(viewModel.currentAnswer.value, true))
-                    changeStyle("incorrect", choice4)
-            }
-        }
-
-        binding.viewShortAnswer.apply {
-            root.visibility = View.GONE
-            answerBtn.setOnClickListener {
-                viewModel.answer(answerField.text.toString().trim())
-                if (!viewModel.currentAnswer.value.equals(answerField.text.toString().trim(), true)) {
-                    changeStyle("incorrect", answerField)
+        viewModel.currentQuestion.observe(viewLifecycleOwner,Observer{
+            binding.viewShortAnswer.apply {
+                root.visibility = View.GONE
+                answerBtn.setOnClickListener {
+                    viewModel.answer(answerField.text.toString().trim())
+                    if (!viewModel.currentAnswer.value.equals(answerField.text.toString().trim(), true)) {
+                        changeStyle("incorrect", answerField)
+                    }
+                    viewModel.showHint()
+                    binding.hintText.text = viewModel.currentAnswer.value
+                    hideKeyboard()
+                    answerBtn.setOnClickListener {}
                 }
-                viewModel.showHint()
-                binding.hintText.text = viewModel.currentAnswer.value
-                hideKeyboard()
+                answerField.filters = arrayOf(InputFilter.AllCaps())
             }
-            answerField.filters = arrayOf(InputFilter.AllCaps())
-        }
+            binding.viewMultipleChoice.apply {
+                root.visibility = View.GONE
+                choice1.setOnClickListener {
+                    viewModel.answer(choice1.text.toString())
+                    if (!choice1.text.toString().equals(viewModel.currentAnswer.value, true)) {
+                        changeStyle("incorrect", choice1)
+                    }
+                    choice1.setOnClickListener{}
+                    choice2.setOnClickListener{}
+                    choice3.setOnClickListener{}
+                    choice4.setOnClickListener{}
+                }
+                choice2.setOnClickListener {
+                    viewModel.answer(choice2.text.toString())
+                    if (!choice2.text.toString().equals(viewModel.currentAnswer.value, true)){
+                        changeStyle("incorrect", choice2)
+                    }
+                    choice1.setOnClickListener{}
+                    choice2.setOnClickListener{}
+                    choice3.setOnClickListener{}
+                    choice4.setOnClickListener{}
+                }
+                choice3.setOnClickListener {
+                    viewModel.answer(choice3.text.toString())
+                    if (!choice3.text.toString().equals(viewModel.currentAnswer.value, true)){
+                        changeStyle("incorrect", choice3)
+                    }
+                    choice1.setOnClickListener{}
+                    choice2.setOnClickListener{}
+                    choice3.setOnClickListener{}
+                    choice4.setOnClickListener{}
+                }
+                choice4.setOnClickListener {
+                    viewModel.answer(choice4.text.toString())
+                    if (!choice4.text.toString().equals(viewModel.currentAnswer.value, true)){
+                        changeStyle("incorrect", choice4)
+                    }
+                    choice1.setOnClickListener{}
+                    choice2.setOnClickListener{}
+                    choice3.setOnClickListener{}
+                    choice4.setOnClickListener{}
+                }
+            }
+        })
+
+
 
         viewModel.currentQuestion.observe(viewLifecycleOwner, Observer {
             if (it != null) {

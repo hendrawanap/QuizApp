@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentQuizResultBinding
 import com.example.quizapp.ui.profile.ProfileViewModel
@@ -67,6 +68,7 @@ class QuizResultFragment : Fragment() {
 
         profileVM.user.observe(viewLifecycleOwner, Observer {
             binding.username.text = it.username
+            Glide.with(this).load(it.displayImg).into(binding.imgresult)
         })
 
         binding.backToHomeBtn.setOnClickListener { findNavController().navigate(R.id.navigation_home) }
