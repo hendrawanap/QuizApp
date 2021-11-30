@@ -49,6 +49,7 @@ class LoginFragment : Fragment() {
                 hideKeyboard()
             }
             goToRegBtn.setOnClickListener { findNavController().navigate(R.id.navigation_register) }
+            lupaPass.setOnClickListener{findNavController().navigate(R.id.navigation_forgetPassword)}
         }
 
         return binding.root

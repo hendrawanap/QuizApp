@@ -20,4 +20,9 @@
         android:name="com.example.quizapp.ui.onboarding.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/navigation_forgetPassword"
+        android:name="com.example.quizapp.ui.onboarding.ForgetPassFragment"
+        android:label="fragment_forget_pass"
+        tools:layout="@layout/fragment_forget_pass" />
 </navigation>
