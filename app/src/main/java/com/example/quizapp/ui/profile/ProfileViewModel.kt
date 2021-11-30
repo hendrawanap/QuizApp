@@ -17,9 +17,14 @@ class ProfileViewModel : ViewModel() {
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
             value = User(user.uid, user.displayName!!, user.photoUrl.toString(), user.email!!)
+        } else {
+            value = User("", "", "", "")
         }
     }
     val user: LiveData<User> = _user
+
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
 
 //    private val _username = MutableLiveData<String>().apply {
 //        val user = FirebaseAuth.getInstance().currentUser
@@ -85,11 +90,15 @@ class ProfileViewModel : ViewModel() {
     private val _newhistory = MutableLiveData<MutableList<Record>>()
 
     init{
-        getRecords()
+        if (FirebaseAuth.getInstance().currentUser != null) {
+            _isLoading.value = true
+            getRecords()
+        }
     }
 
 
     fun getRecords() {
+        _isLoading.value = true
         val db = Firebase.firestore
         val user = FirebaseAuth.getInstance().currentUser
         val collectionRef = db.collection("records")
@@ -108,6 +117,7 @@ class ProfileViewModel : ViewModel() {
                 } else {
                     _newhistory.value = records.subList(0, 3)
                 }
+                _isLoading.value = false
             }
     }
 

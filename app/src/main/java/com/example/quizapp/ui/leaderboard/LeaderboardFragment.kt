@@ -14,6 +14,7 @@ import com.example.quizapp.databinding.FragmentLeaderboardBinding
 import com.example.quizapp.databinding.FragmentProfileBinding
 import kotlinx.android.synthetic.main.fragment_leaderboard.*
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.quizapp.model.Leaderboard
 import com.example.quizapp.model.Record
@@ -27,7 +28,7 @@ class LeaderboardFragment : Fragment() {
         fun newInstance() = LeaderboardFragment()
     }
 
-    private lateinit var viewModel: LeaderboardViewModel
+    private val viewModel: LeaderboardViewModel by activityViewModels()
     private var _binding: FragmentLeaderboardBinding? = null
     private val binding get() = _binding!!
     lateinit var ldr: MutableList<UserLeaderboard>
@@ -37,7 +38,7 @@ class LeaderboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(LeaderboardViewModel::class.java)
+//        viewModel = ViewModelProvider(this).get(LeaderboardViewModel::class.java)
         _binding = FragmentLeaderboardBinding.inflate(inflater, container, false)
 
         binding.toggleKategori.left.text = "Pilihan Ganda"

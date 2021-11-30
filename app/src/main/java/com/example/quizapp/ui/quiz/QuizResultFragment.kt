@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentQuizResultBinding
+import com.example.quizapp.ui.leaderboard.LeaderboardViewModel
 import com.example.quizapp.ui.profile.ProfileViewModel
 
 class QuizResultFragment : Fragment() {
@@ -22,6 +23,7 @@ class QuizResultFragment : Fragment() {
 
     private val viewModel: QuizViewModel by activityViewModels()
     private val profileVM: ProfileViewModel by activityViewModels()
+    private val leaderboardVM: LeaderboardViewModel by activityViewModels()
     private var _binding: FragmentQuizResultBinding? = null
 
     private val binding get() = _binding!!
@@ -71,7 +73,11 @@ class QuizResultFragment : Fragment() {
             Glide.with(this).load(it.displayImg).into(binding.imgresult)
         })
 
-        binding.backToHomeBtn.setOnClickListener { findNavController().navigate(R.id.navigation_home) }
+        binding.backToHomeBtn.setOnClickListener {
+            findNavController().navigate(R.id.navigation_home)
+            leaderboardVM.getLeaderboards()
+            profileVM.getRecords()
+        }
 
         return binding.root
     }

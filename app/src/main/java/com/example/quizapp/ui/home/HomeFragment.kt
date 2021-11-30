@@ -23,7 +23,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private val profileViewModel: ProfileViewModel by activityViewModels()
-    private lateinit var leaderboardViewModel: LeaderboardViewModel
+    private val leaderboardViewModel: LeaderboardViewModel by activityViewModels()
     private var _binding: FragmentHomeBinding? = null
 
     // This property is only valid between onCreateView and
@@ -40,8 +40,8 @@ class HomeFragment : Fragment() {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        leaderboardViewModel =
-            ViewModelProvider(this).get(LeaderboardViewModel::class.java)
+//        leaderboardViewModel =
+//            ViewModelProvider(this).get(LeaderboardViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -69,6 +69,22 @@ class HomeFragment : Fragment() {
         profileViewModel.newhistory.observe(viewLifecycleOwner, Observer {
             newhistory = it
             binding.rvHistory.rvProfile.adapter = RecentlyPlayedAdapter(newhistory)
+        })
+
+        leaderboardViewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                binding.leaderboardLoading.visibility = View.VISIBLE
+            } else {
+                binding.leaderboardLoading.visibility = View.GONE
+            }
+        })
+
+        profileViewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                binding.recentPlayedLoading.visibility = View.VISIBLE
+            } else {
+                binding.recentPlayedLoading.visibility = View.GONE
+            }
         })
 
         return root

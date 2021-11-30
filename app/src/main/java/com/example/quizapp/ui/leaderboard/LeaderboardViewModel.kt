@@ -18,12 +18,16 @@ class LeaderboardViewModel : ViewModel() {
     private val _selectedTopic = MutableLiveData<String>()
     private val _selectedType = MutableLiveData<String>()
     private val _selectedLeaderboard = MutableLiveData<Leaderboard>()
+    private val _isLoading = MutableLiveData<Boolean>()
+
     val leaderboardList: LiveData<MutableList<Leaderboard>> = _leaderboardList
     val selectedTopic: LiveData<String> = _selectedTopic
     val selectedType: LiveData<String> = _selectedType
     val selectedLeaderboard: LiveData<Leaderboard> = _selectedLeaderboard
+    val isLoading: LiveData<Boolean> = _isLoading
 
     init {
+        _isLoading.value = true
         getLeaderboards()
         _selectedTopic.value = "Makanan"
         _selectedType.value = "Multiple"
@@ -43,6 +47,7 @@ class LeaderboardViewModel : ViewModel() {
     }
 
     fun getLeaderboards() {
+        _isLoading.value = true
         viewModelScope.launch(Dispatchers.IO) {
             val leaderboards = ArrayList<Leaderboard>()
             leaderboards.add(Leaderboard("Makanan", "Multiple", ArrayList()))
@@ -66,6 +71,7 @@ class LeaderboardViewModel : ViewModel() {
             withContext(Dispatchers.Main) {
                 _leaderboardList.value = leaderboards
                 _selectedLeaderboard.value = leaderboards[0]
+                _isLoading.value = false
             }
         }
     }

@@ -50,6 +50,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun register() {
+        binding.registerLoading.visibility = View.VISIBLE
         var email = binding.regEmail.text.toString()
         var password = binding.regPassword.text.toString()
         var name = binding.regName.text.toString()
@@ -60,10 +61,12 @@ class RegisterFragment : Fragment() {
                     updateProfile(name)
                 }else {
                     Toast.makeText(this.context, "Registration Failed", Toast.LENGTH_LONG).show()
+                    binding.registerLoading.visibility = View.GONE
                 }
             })
         } else {
             Toast.makeText(this.context, "Fill all the fields!", Toast.LENGTH_LONG).show()
+            binding.registerLoading.visibility = View.GONE
         }
 
     }

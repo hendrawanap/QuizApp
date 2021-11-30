@@ -56,6 +56,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun login() {
+        binding.loginLoading.visibility = View.VISIBLE
         var email = binding.loginEmail.text.toString()
         var password = binding.loginPassword.text.toString()
 
@@ -63,16 +64,17 @@ class LoginFragment : Fragment() {
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener( OnCompleteListener { task ->
                 if(task.isSuccessful) {
                     Toast.makeText(this.context, "Successfully Logged In", Toast.LENGTH_LONG).show()
+                    binding.loginLoading.visibility = View.GONE
                     val intent = Intent(this.activity, MainActivity::class.java)
                     startActivity(intent)
                 }else {
-                    Log.d(TAG, email)
-                    Log.d(TAG, password)
                     Toast.makeText(this.context, task.exception.toString(), Toast.LENGTH_LONG).show()
+                    binding.loginLoading.visibility = View.GONE
                 }
             })
         } else {
             Toast.makeText(this.context, "Fill all the fields!", Toast.LENGTH_LONG).show()
+            binding.loginLoading.visibility = View.GONE
         }
     }
 

@@ -111,6 +111,14 @@
                     android:textSize="16sp" />
             </LinearLayout>
 
+            <ProgressBar
+                android:id="@+id/leaderboard_loading"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:indeterminateTint="@color/white"
+                android:layout_gravity="center_horizontal"/>
+
             <!--Papan Peringkat-->
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -155,6 +163,13 @@
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:layout_marginBottom="20dp"/>
+
+            <ProgressBar
+                android:id="@+id/recentPlayedLoading"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:indeterminateTint="@color/white"
+                android:layout_gravity="center_horizontal"/>
 
             <include
                 android:id="@+id/rv_History"
