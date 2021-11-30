@@ -15,21 +15,42 @@ import kotlinx.coroutines.withContext
 
 class LeaderboardViewModel : ViewModel() {
     private val _leaderboardList = MutableLiveData<MutableList<Leaderboard>>()
+    private val _selectedTopic = MutableLiveData<String>()
+    private val _selectedType = MutableLiveData<String>()
+    private val _selectedLeaderboard = MutableLiveData<Leaderboard>()
     val leaderboardList: LiveData<MutableList<Leaderboard>> = _leaderboardList
+    val selectedTopic: LiveData<String> = _selectedTopic
+    val selectedType: LiveData<String> = _selectedType
+    val selectedLeaderboard: LiveData<Leaderboard> = _selectedLeaderboard
 
     init {
         getLeaderboards()
+        _selectedTopic.value = "Makanan"
+        _selectedType.value = "Multiple"
+
+    }
+
+    fun setSelectedTopic(topic: String){
+        _selectedTopic.value = topic
+    }
+
+    fun setSelectedType(type: String){
+        _selectedType.value = type
+    }
+
+    fun setSelectedLeaderboard(index: Int){
+        _selectedLeaderboard.value = leaderboardList.value!![index]
     }
 
     fun getLeaderboards() {
         viewModelScope.launch(Dispatchers.IO) {
             val leaderboards = ArrayList<Leaderboard>()
-            leaderboards.add(Leaderboard("Makanan - Pilgan", ArrayList()))
-            leaderboards.add(Leaderboard("Makanan - Isian", ArrayList()))
-            leaderboards.add(Leaderboard("Ikon - Pilgan", ArrayList()))
-            leaderboards.add(Leaderboard("Ikon - Isian", ArrayList()))
-            leaderboards.add(Leaderboard("Wisata - Pilgan", ArrayList()))
-            leaderboards.add(Leaderboard("Wisata - Isian", ArrayList()))
+            leaderboards.add(Leaderboard("Makanan", "Multiple", ArrayList()))
+            leaderboards.add(Leaderboard("Makanan", "Short", ArrayList()))
+            leaderboards.add(Leaderboard("Ikon", "Multiple", ArrayList()))
+            leaderboards.add(Leaderboard("Ikon", "Short", ArrayList()))
+            leaderboards.add(Leaderboard("Wisata", "Multiple", ArrayList()))
+            leaderboards.add(Leaderboard("Wisata", "Short", ArrayList()))
 
             val makananLeaderboards = async { getLeaderboard("Makanan") }
             val ikonLeaderboards = async { getLeaderboard("Ikon") }
@@ -44,6 +65,7 @@ class LeaderboardViewModel : ViewModel() {
 
             withContext(Dispatchers.Main) {
                 _leaderboardList.value = leaderboards
+                _selectedLeaderboard.value = leaderboards[0]
             }
         }
     }
@@ -53,8 +75,8 @@ class LeaderboardViewModel : ViewModel() {
         val collectionRef = db.collection("highestscores")
         val highestscores = collectionRef.whereEqualTo("topic", topic).get().await().toObjects(Highestscore::class.java)
         val leaderboards = ArrayList<Leaderboard>()
-        leaderboards.add(Leaderboard("$topic - Pilgan", ArrayList()))
-        leaderboards.add(Leaderboard("$topic - Isian", ArrayList()))
+        leaderboards.add(Leaderboard(topic, "Multiple",ArrayList()))
+        leaderboards.add(Leaderboard(topic, "Short",ArrayList()))
 
         if (highestscores.isNotEmpty()) {
             highestscores.sortByDescending { h -> h.score }
@@ -64,12 +86,12 @@ class LeaderboardViewModel : ViewModel() {
 
             if (multiple.isNotEmpty()) {
                 var multipleUsers = multiple.map { m -> toUserLeaderboard(m)}
-                leaderboards[0] = (Leaderboard("$topic - Pilgan", multipleUsers as ArrayList<UserLeaderboard>))
+                leaderboards[0] = (Leaderboard(topic, "Multiple",multipleUsers as ArrayList<UserLeaderboard>))
             }
 
             if (short.isNotEmpty()) {
                 var shortUsers = short.map { m -> toUserLeaderboard(m)}
-                leaderboards[1] = (Leaderboard("$topic - Isian", shortUsers as ArrayList<UserLeaderboard>))
+                leaderboards[1] = (Leaderboard(topic, "Short", shortUsers as ArrayList<UserLeaderboard>))
             }
         }
 

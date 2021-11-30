@@ -23,7 +23,7 @@ class LeaderboardAdapter(private val leaderboardList: List<Leaderboard>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         with(holder) {
             with(leaderboardList[position]) {
-                binding.tvKategori.text = this.topic
+                binding.tvKategori.text = "${this.topic} - ${this.type}"
                 val noProfile = "https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg"
 
                 Glide.with(holder.itemView).load(noProfile).into(binding.leaderboardImg1)

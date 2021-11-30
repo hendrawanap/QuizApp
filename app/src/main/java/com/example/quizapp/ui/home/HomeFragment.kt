@@ -23,7 +23,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private val profileViewModel: ProfileViewModel by activityViewModels()
-    private val leaderboardViewModel: LeaderboardViewModel by activityViewModels()
+    private lateinit var leaderboardViewModel: LeaderboardViewModel
     private var _binding: FragmentHomeBinding? = null
 
     // This property is only valid between onCreateView and
@@ -39,6 +39,9 @@ class HomeFragment : Fragment() {
     ): View? {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
+
+        leaderboardViewModel =
+            ViewModelProvider(this).get(LeaderboardViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
